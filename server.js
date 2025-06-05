@@ -42,7 +42,7 @@ function auth(req,res,next) {
 }
 
 app.get('/',auth, (req, res) => {
-  res.render('proto.ejs');
+  res.render('app');
 });
 
 
