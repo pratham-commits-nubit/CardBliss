@@ -126,7 +126,7 @@ io.on('connection',(socket)=>{
 
 app.get('/access',(req,res)=>{
   if(!req.cookies.token){
-    res.render('protection')
+    res.render('auth')
   }
   else{
     res.redirect('/auth')
