@@ -3,7 +3,6 @@ const socket = require('socket.io')
 const cookieParser = require('cookie-parser')
 const http = require('http')
 const path = require('path');
-const jwt = require('jsonwebtoken')
 
 
 
@@ -25,23 +24,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-function auth(req,res,next) {
-  try {
-    const { token } = req.cookies;
-    if (!token) return res.redirect('/access');
-
-    const decoded = jwt.verify(token, secret);
-    if (decoded.code) {
-      next();
-    } else {
-      res.redirect('/access');
-    }
-  } catch (err) {
-    res.redirect('/access');
-  }
-}
-
-app.get('/',auth, (req, res) => {
+app.get('/', (req, res) => {
   res.render('app');
 });
 
@@ -100,6 +83,7 @@ io.on('connection',(socket)=>{
   })
 
   socket.on("nameExchange",(player)=>{
+    console.log(player.name)
     player.player1.split(",")[0] == socket.id ?  io.to(player.player2.split(",")[0]).emit('nameExchange',player.name) : io.to(player.player1.split(",")[0]).emit('nameExchange',player.name)
   })
   socket.on('disconnect',()=>{
@@ -124,27 +108,7 @@ io.on('connection',(socket)=>{
   })
 })
 
-app.get('/access',(req,res)=>{
-  if(!req.cookies.token){
-    res.render('auth')
-  }
-  else{
-    res.redirect('/auth')
-  }
-})
 
-app.post('/access',(req,res)=>{
-  const code = req.body.code
-
-  if(code == "Alucard-Turbo777"){
-    const token = jwt.sign({code},secret)
-    res.cookie("token",token)
-    res.redirect('/')
-  }
-  else{
-    res.redirect('/access')
-  }
-})
 
 app.get('/ping',(req,res)=>{
   res.send('pong')
