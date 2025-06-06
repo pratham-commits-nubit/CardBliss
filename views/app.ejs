@@ -31,7 +31,6 @@
       z-index: 100;
       height: clamp(50px, 20vh, 150px);
       width: clamp(40px, 9vw, 200px);
-
       transform-style: preserve-3d;
       justify-self: center;
       transform: 1s;
@@ -400,14 +399,6 @@
       border: 2px solid red;
     }
 
-    .label {
-      font-size: 20px;
-      font-weight: bold;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      fill: white;
-    }
-
     .message-pair {
       font-size: clamp(18px, 5vw, 32px);
       text-align: center;
@@ -458,7 +449,6 @@
     }
 
     .game-over-img {
-      /* background: red; */
       width: 100%;
       max-width: 300px;
       height: auto;
@@ -651,12 +641,7 @@
 
       .setting-1 {
         flex-direction: column;
-        /* gap: 10px; */
       }
-
-      /* .start-button{
-
-      } */
 
       .nav {
         gap: 10px;
@@ -1000,9 +985,7 @@
     <div class="box-game-over">
     </div>
   </div>
-  <!-- <div class="landing-game"> -->
   <section class="home">
-    <!-- <div class="home-cards"> -->
     <!-- Wrapped each card in a container -->
     <div class="card-container" style="--index:0">
       <div class="card-home" style="background-image: url(/images/alucard.jpg);"></div>
@@ -1037,14 +1020,11 @@
     <div class="card-container" style="--index:10">
       <div class="card-home" style="background-image: url(/images/anmol.jpg);"></div>
     </div>
-
-    <!-- </div> -->
     <div class="center">
       <div class="home-text">
         <h1 class="center-text center-text-1">card</h1>
         <h1 class="center-text center-text-2">bliss</h1>
       </div>
-
       <button class="center-button">
         <p>play now</p>
       </button>
@@ -1053,7 +1033,7 @@
       <img src="/images/clouds2.png" alt="">
       <img src="/images/clouds1.png" alt="">
     </div>
-    <!-- </div> -->
+
     <div class="setting">
       <h1 class="setting-text">SOME SETTING's</h1>
       <div class="setting-1">
@@ -1075,6 +1055,7 @@
       </div>
     </div>
   </section>
+
   <div class="nav">
     <div class="you-nav">You</div>
     <div class="scores">
@@ -1087,6 +1068,7 @@
     </div>
     <div class="opponent-nav">rival</div>
   </div>
+
   <section class="main-section">
     <main></main>
     <audio id="song-1" src="/songs/Eclipse Everything.mp3" loop></audio>
@@ -1098,7 +1080,7 @@
     <div style="display: none;" class="player1"></div>
     <div style="display: none;" class="player2"></div>
   </section>
-  </div>
+
   <p class="version"
     style="font-family: 'Jersey 20'; position: absolute; z-index: 1000; font-size: clamp(12px, 3vw, 18px); color:rgb(255, 255, 255); right:10px;">
     Alpha v0.1</p>
