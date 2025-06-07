@@ -33,6 +33,7 @@ io.on('connection',(socket)=>{
     let alreadyInQueue = queue.find(player => player[0] === socket.id);
     let alreadyInGame = Object.entries(game).find(gameState => gameState.player1 === socket.id || gameState.player2 === socket.id);
 
+    console.log(details.name)
       if(!alreadyInQueue && !alreadyInGame){
         queue.push([socket.id, details])
         io.emit("QueueLength",queue.length)
