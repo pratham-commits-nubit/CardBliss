@@ -94,7 +94,7 @@ io.on('connection',(socket)=>{
         .split("-")
         .find(id => id !== socket.id);
 
-      io.emit("gameDisconnected");
+      io.to(otherSocketId).emit("gameDisconnected");
       break;
     }
   }
