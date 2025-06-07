@@ -33,7 +33,7 @@ io.on('connection',(socket)=>{
     let alreadyInQueue = queue.find(player => player[0] === socket.id);
     let alreadyInGame = Object.entries(game).find(gameState => gameState.player1 === socket.id || gameState.player2 === socket.id);
 
-    console.log(details.name)
+    console.log("queue",details.name)
       if(!alreadyInQueue && !alreadyInGame){
         queue.push([socket.id, details])
         io.emit("QueueLength",queue.length)
@@ -58,7 +58,6 @@ io.on('connection',(socket)=>{
   })
 
   socket.on('score-update-frontend',(score)=>{
-    console.log(score.score)
     io.to(score.player1.split(',')[0] == socket.id ? score.player2.split(',')[0] : score.player1.split(',')[0]).emit('score-update-backend',{ card: score.card, score:score.score})
   })
 
@@ -81,7 +80,7 @@ io.on('connection',(socket)=>{
   })
 
   socket.on("nameExchange",(player)=>{
-    console.log(player.name)
+    console.log("playing",player.name)
     player.player1.split(",")[0] == socket.id ?  io.to(player.player2.split(",")[0]).emit('nameExchange',player.name) : io.to(player.player1.split(",")[0]).emit('nameExchange',player.name)
   })
   socket.on('disconnect',()=>{
