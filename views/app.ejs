@@ -1408,6 +1408,7 @@
 
       document.querySelector('.setting').style.display = "none"
       document.querySelector('.home').insertAdjacentHTML("beforeend", "<h1>Waiting for a player...</h1>");
+      alert("To keep playing, you can either open a new tab and hit 'Play' to jump right back in, or share the game link with your friends to invite them, playing with friends makes it more fun! Or you can simply wait for a user to join the game.");
 
       socket.emit("addQueue", { gridSelect, songSelect})
 
